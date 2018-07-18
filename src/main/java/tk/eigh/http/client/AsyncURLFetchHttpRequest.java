@@ -3,16 +3,18 @@
  */
 package tk.eigh.http.client;
 
-import com.google.appengine.api.ThreadManager;
-import com.google.appengine.api.urlfetch.HTTPRequest;
-import com.google.appengine.api.urlfetch.URLFetchService;
-import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 import java.io.IOException;
 import java.util.concurrent.Callable;
+
 import org.springframework.http.client.AsyncClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureTask;
+
+import com.google.appengine.api.ThreadManager;
+import com.google.appengine.api.urlfetch.HTTPRequest;
+import com.google.appengine.api.urlfetch.URLFetchService;
+import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 /**
  *
@@ -22,7 +24,7 @@ class AsyncURLFetchHttpRequest extends URLFetchHttpRequest implements AsyncClien
 
 
     AsyncURLFetchHttpRequest(HTTPRequest request) {
-       super(request);
+        super(request);
     }
 
     @Override

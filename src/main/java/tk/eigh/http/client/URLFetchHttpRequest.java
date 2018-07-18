@@ -3,18 +3,20 @@
  */
 package tk.eigh.http.client;
 
-import com.google.appengine.api.urlfetch.HTTPRequest;
-import com.google.appengine.api.urlfetch.URLFetchService;
-import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequest;
 import org.springframework.http.client.ClientHttpResponse;
+
+import com.google.appengine.api.urlfetch.HTTPRequest;
+import com.google.appengine.api.urlfetch.URLFetchService;
+import com.google.appengine.api.urlfetch.URLFetchServiceFactory;
 
 /**
  *
@@ -22,9 +24,10 @@ import org.springframework.http.client.ClientHttpResponse;
  */
 class URLFetchHttpRequest implements ClientHttpRequest {
 
-    final HTTPRequest request;
-    final HttpHeaders headers = new HttpHeaders();
-    final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    final HTTPRequest           request;
+    final HttpHeaders           headers = new HttpHeaders();
+    final ByteArrayOutputStream baos    = new ByteArrayOutputStream();
+
     URLFetchHttpRequest(HTTPRequest request) {
         this.request = request;
     }
@@ -57,5 +60,10 @@ class URLFetchHttpRequest implements ClientHttpRequest {
     @Override
     public OutputStream getBody() throws IOException {
         return baos;
+    }
+
+    @Override
+    public String getMethodValue() {
+        return request.getMethod().name();
     }
 }

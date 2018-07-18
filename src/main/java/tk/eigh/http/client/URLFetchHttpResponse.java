@@ -3,16 +3,18 @@
  */
 package tk.eigh.http.client;
 
-import com.google.appengine.api.urlfetch.HTTPHeader;
-import com.google.appengine.api.urlfetch.HTTPResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
+
+import com.google.appengine.api.urlfetch.HTTPHeader;
+import com.google.appengine.api.urlfetch.HTTPResponse;
 
 /**
  *
@@ -20,7 +22,7 @@ import org.springframework.http.client.ClientHttpResponse;
  */
 class URLFetchHttpResponse implements ClientHttpResponse {
 
-    private final HTTPResponse response;
+    private final HTTPResponse   response;
     private ByteArrayInputStream bais;
 
     public URLFetchHttpResponse(HTTPResponse response) {
@@ -60,8 +62,8 @@ class URLFetchHttpResponse implements ClientHttpResponse {
     @Override
     public HttpHeaders getHeaders() {
         HttpHeaders headers = new HttpHeaders();
-        for(HTTPHeader header :response.getHeaders()){
-           headers.add(header.getName(), header.getValue());
+        for (HTTPHeader header : response.getHeaders()) {
+            headers.add(header.getName(), header.getValue());
         }
         return headers;
     }
